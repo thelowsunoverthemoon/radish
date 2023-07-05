@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/zqt279r.png">
 </p>
 <p align="center">
-  <b>Mouse and Keyboard Input Detection in Batch Script</b>
+  <b>Mouse and Keyboard Inputs in Batch Script</b>
 </p>
 
 ## Features
@@ -19,3 +19,7 @@
   - Button State (eg Key Pressed)
   - Control Keys
 * Intuitive macro interface
+
+## Comparison to other Input Methods
+
+
