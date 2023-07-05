@@ -20,6 +20,20 @@
   - Control Keys
 * Intuitive macro interface
 
-## Comparison to other Input Methods
 
+## Usage
+
+**radish**. Unlike using ```CHOICE```, this allows non-blocking input; even if you use ```CHOICE``` in a separate process, this allows detection of multiple keys at once, including features such as control keys and console based input that is simply not possible using pure Batch.
+
+```Batch
+```
+
+## Documentation
+Visit the documentation [here](doc/README.md)!
+
+## Examples
+Look at the examples [here](ex)!
+
+## How does it work?
+**radish**
 
