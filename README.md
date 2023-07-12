@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/zqt279r.png">
 </p>
 <p align="center">
-  <b>Mouse and Keyboard Inputs in Batch Script</b>
+  <b>Mouse and Keyboard Input in Batch Script</b>
 </p>
 
 ## Features
@@ -14,16 +14,22 @@
   - Action Type (eg double click)
   - Control Keys (eg Caps Lock)
   - Scroll Wheel Direction
-* Supports KeyBoard Input with
+* Supports Keyboard Input with
   - Character Type
   - Button State (eg Key Pressed)
   - Control Keys
 * Intuitive macro interface
+* Works with Windows 7+ with Powershell installed
 
+## Drawbacks
+
+* Uses Batch
+* May require Admin Privileges
+* Starts new CMD process 
 
 ## Usage
 
-**radish**. Unlike using ```CHOICE```, this allows non-blocking input; even if you use ```CHOICE``` in a separate process, this allows detection of multiple keys at once, including features such as control keys and console based input that is simply not possible using pure Batch.
+**radish** is created for mouse and keyboard input in Batch Script. Unlike using ```CHOICE```, this allows non-blocking input; even if you use ```CHOICE``` in a separate process, **radish** includes features that are simply not possible using pure Batch, such as control keys. For example, detecting a mouse click at a certain point can be as simple as:
 
 ```Batch
 ```
@@ -35,5 +41,5 @@ Visit the documentation [here](doc/README.md)!
 Look at the examples [here](ex)!
 
 ## How does it work?
-**radish**
+To access the Windows Console API without downloading anything extra, we can use DllImport in C#. To use C#, we can use Powershell's Add-Type. **radish** uses Powershell via [this](https://www.dostips.com/forum/viewtopic.php?t=6936) method by Aacini to do exactly this. Basically, we can pipe the Powershell output to Batch, and read it through ```SET /P```. 
 
