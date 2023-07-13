@@ -66,7 +66,7 @@ Please refer [here](https://learn.microsoft.com/en-us/windows/console/mouse-even
 
 ### Key Messages
 
-Please refer [here](https://learn.microsoft.com/en-us/windows/console/key-event-record-str). if you are unsure of what the labels/values mean. Also note values with ```x``` are hex values, and so you will need to convert them to decimal.
+Please refer [here](https://learn.microsoft.com/en-us/windows/console/key-event-record-str) if you are unsure of what the labels/values mean. Also note values with ```x``` are hex values, and so you will need to convert them to decimal.
 
 | ```%%A```  | ```%%B``` | ```%%C``` | ```%%D``` |
 | ------------- | ------------- | ------------- | ------------- |
