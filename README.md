@@ -32,6 +32,11 @@
 **radish** is created for mouse and keyboard input in Batch Script. Unlike using ```CHOICE```, this allows non-blocking input; even if you use ```CHOICE``` in a separate process, **radish** includes features that are simply not possible using pure Batch, such as control keys. For example, detecting a mouse click at a certain point can be as simple as:
 
 ```Batch
+%RADISH_START_PARSE%
+    IF "%%D" == "1" (
+        REM Do Stuff!
+    )
+%RADISH_END_PARSE%
 ```
 
 ## Documentation
@@ -41,5 +46,5 @@ Visit the documentation [here](doc/README.md)!
 Look at the examples [here](ex)!
 
 ## How does it work?
-To access the Windows Console API without downloading anything extra, we can use DllImport in C#. To use C#, we can use Powershell's Add-Type. **radish** uses Powershell via [this](https://www.dostips.com/forum/viewtopic.php?t=6936) method by Aacini to do exactly this. Basically, we can pipe the Powershell output to Batch, and read it through ```SET /P```. 
+To access the Windows Console API without downloading anything extra, we can use ```DllImport``` in C#. To use C#, we can use Powershell's Add-Type to add a ```.NET``` class. **radish** uses Powershell via [this](https://www.dostips.com/forum/viewtopic.php?t=6936) method by Aacini to do exactly this. Basically, we can pipe the Powershell output to Batch, and read it through ```SET /P```, allowing us to have accurate input while maintaining a familiar Batch frontend.
 
