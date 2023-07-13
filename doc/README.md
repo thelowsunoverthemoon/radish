@@ -4,7 +4,7 @@
 2. Before using **radish**, ```CALL :RADISH_PLAY```. Very important : this starts a new process starting at the specified label. See the examples [here](ex)!
 3. In the label, once you want to start the input, use ```%RADISH_START%```. Once you want to end, use ```%RADISH_END%```
 4. To get input, use the macros ```%RADISH_START_PARSE%``` and ```%RADISH_END_PARSE%```
-5. Visit the documentation [here](doc/README.md) and look at the examples [here](ex)!
+5. Visit the documentation [here](doc/README.md) and look at the examples [here](../ex)!
 
 ## Library
 
