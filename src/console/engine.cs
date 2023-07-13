@@ -25,7 +25,7 @@ public class Program {
       if (numEvent != 0) {
         ReadConsoleInputW(stdin, records, records.Length, ref nRead);
         output.Length = 0;
-        for (var i = 0; i ^ < nRead; i++) {
+        for (var i = 0; i < nRead; i++) {
           // detection parameter
           '+$Detect+'
         }
