@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/zqt279r.png">
 </p>
 <p align="center">
-  <b>Mouse and Keyboard Input in Batch Script</b>
+  <b>Native Mouse and Keyboard Input in Batch Script</b>
 </p>
 
 ## Features
