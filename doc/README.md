@@ -1,11 +1,12 @@
 ## How to Use
 
 1. Copy the engine [here](../bin/engine.bat) to the bottom of your batch file and the header [here](../bin/header.bat) to the top of your batch file. Please note that the header is very simple, so it's easy to customize if you have other new processes.
-2. Before using **radish**, ```CALL :RADISH <label>```. Very important : this starts a new process starting at the specified label.
-3. In the label, once you want to start the input, use ```CALL :RADISH_WAIT```. Once you want to end, use ```%RADISH_END%```
-4. To get input, read the ```CMDCMDLINE``` variable
-5. To use audio, use see the documentation below
-5. Look at the examples [here](../ex)!
+2. Copy radish.exe and fmod.dll from [here](../bin/radish.exe) and [here](../bin/fmod.dll) and put it in a directory where the Batch file can find them
+3. Before using **radish**, ```CALL :RADISH <label>```. Very important : this starts a new process starting at the specified label.
+4. In the label, once you want to start the input, use ```CALL :RADISH_WAIT```. Once you want to end, use ```%RADISH_END%```. Note : ```%RADISH_END%``` returns control to after ```CALL :RADISH <label>```.
+5. To get input, read the ```CMDCMDLINE``` variable
+6. To use audio, see the documentation below
+7. Look at the examples [here](../ex)!
 
 ## Input
 
@@ -15,7 +16,7 @@ The ```CMDCMDLINE``` variable is in the format
 mouse_x.mouse_y.mouse_button.-key_a-key_b-...-
 ```
 
-Which can be easily parsed via ```FOR /F```. The keys are represented by ```wVirtualKeyCode``` from [here](https://learn.microsoft.com/en-us/windows/console/key-event-record-str). Mouse X and Mouse Y start from 0, in relation to the console window. Mouse buttons are from ```dwButtonState``` [here](https://learn.microsoft.com/en-us/windows/console/mouse-event-record-str). The only difference is mouse scroll is represented by 6 (up), and -6 (down).
+Which can be easily parsed via ```FOR /F```. The keys are represented by ```wVirtualKeyCode``` from [here](https://learn.microsoft.com/en-us/windows/console/key-event-record-str). Mouse X and mouse Y start from 0, in relation to the console window. Mouse buttons are from ```dwButtonState``` [here](https://learn.microsoft.com/en-us/windows/console/mouse-event-record-str). The only difference is mouse scroll is represented by 6 (up), and -6 (down).
 
 ## Audio
 
@@ -33,7 +34,7 @@ CALL :RADISH_ADD <name> <var> <type>
 
 * name : name of file
 * var : variable to return sound to
-* type to load. Can be EFFECT, TRACK, or OBJECT
+* type : type to load. Can be EFFECT, TRACK, or OBJECT
 
 DO NOT alter this variable. For spatial sound, you must set an observer through
 

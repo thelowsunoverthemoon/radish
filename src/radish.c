@@ -72,11 +72,11 @@ struct sound {
 };
 
 struct sound_obj {
-	int x;
-	int y;
-	struct sound sound;
-	struct sound_obj* next;
-	int id;
+    int x;
+    int y;
+    struct sound sound;
+    struct sound_obj* next;
+    int id;
 };
 
 struct param_store {
@@ -478,8 +478,8 @@ wchar_t* add_var(struct param_store* param, int str) {
     int len = strlen(param->buffer + str) + 1;
     wchar_t* buf = malloc(len * sizeof(wchar_t));
     IF_ERR_EXIT(buf, "allocation error for observer variable");
-	MultiByteToWideChar(CP_UTF8, 0, param->buffer + str, -1, buf, len);
-	return buf;
+    MultiByteToWideChar(CP_UTF8, 0, param->buffer + str, -1, buf, len);
+    return buf;
 }
 
 BOOL set_observer(struct param_store* param) {
@@ -509,22 +509,22 @@ int index_to_id(int index) {
 }
 
 void remove_sound_obj(struct param_store* param, int index) {
-	struct sound_obj* prev = NULL;
-	struct sound_obj* cur = param->obj_list;
+    struct sound_obj* prev = NULL;
+    struct sound_obj* cur = param->obj_list;
     int id = index_to_id(index);
-	while (cur) {
-		if (cur->id == id) {
-			if (cur == param->obj_list) {
-				param->obj_list = cur->next;
-			} else {
-				prev->next = cur->next;
-			}
+    while (cur) {
+        if (cur->id == id) {
+            if (cur == param->obj_list) {
+                param->obj_list = cur->next;
+            } else {
+                prev->next = cur->next;
+            }
             free(cur);
-			return;
-		}
-		prev = cur;
-		cur = cur->next;
-	}
+            return;
+        }
+        prev = cur;
+        cur = cur->next;
+    }
 }
 
 BOOL
