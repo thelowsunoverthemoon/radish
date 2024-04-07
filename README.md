@@ -1,50 +1,32 @@
 <p align="center">
-  <img src="https://i.imgur.com/zqt279r.png">
+  <img src="img/radish.png">
 </p>
 <p align="center">
-  <b>Native Mouse and Keyboard Input in Batch Script</b>
+  <b>CMD extension for Mouse / Keyboard Input and Audio</b>
 </p>
 
 ## Features
 
 * Simple to include, just copy & paste!
-* Supports Mouse Input with 
-  - Console Based Position
-  - Button Press (eg left mouse button)
-  - Action Type (eg double click)
-  - Control Keys (eg Caps Lock)
-  - Scroll Wheel Direction
-* Supports Keyboard Input with
-  - Character Type
-  - Button State (eg Key Pressed)
-  - Control Keys
-* Intuitive macro interface
-* Works with Windows 7+ with Powershell installed
-
-## Drawbacks
-
-* Uses Batch
-* May require Admin Privileges
-* Starts new CMD process 
+* Audio
+    * Intuitive macro interface
+    * Supports stop, play, volume transitions
+    * Supports implicit spatial audio through environment variables
+* Mouse / Keyboard Input
+    * Defined implicitly in CMDCMDLINE variable
+    * Supports console-based mouse position, mouse events
+    * Supports current keys pressed
+* 64 bit, Windows 10+ only
 
 ## Usage
 
-**radish** is created for mouse and keyboard input in Batch Script. Unlike using ```CHOICE```, this allows non-blocking input; even if you use ```CHOICE``` in a separate process, **radish** includes features that are simply not possible using pure Batch, such as control keys. For example, detecting a mouse click at a certain point can be as simple as:
-
-```Batch
-%RADISH_START_PARSE%
-    IF "%%D" == "1" (
-        REM Do Stuff!
-    )
-%RADISH_END_PARSE%
-```
+**radish** is created as a CMD "extension" to be used by Batch Script in games. It provides the most basic features needed in games such as audio and mouse / keyboard input that are somewhat difficult in Batch. Unlike other .exes that provide similar functionality, **radish** does NOT need to be called every time it is needed. It runs along with the Batch script and provides features in Batch terms like environment variables and macros.
 
 ## Documentation
 Visit the documentation [here](doc/README.md)!
 
-## Examples
-Look at the examples [here](ex)!
+## Example
+Look at the example [here](ex)!
 
 ## How does it work?
-To access the Windows Console API without downloading anything extra, we can use ```DllImport``` in C#. To use C#, we can use Powershell's Add-Type to add a ```.NET``` class. **radish** uses Powershell via [this](https://www.dostips.com/forum/viewtopic.php?t=6936) method by Aacini to do exactly this. Basically, we can pipe the Powershell output to Batch, and read it through ```SET /P```, allowing us to have accurate input while maintaining a familiar Batch frontend.
-
+To set the value of the variable ```CMDCMDLINE```, we can take advantage of the fact that it directly reads from the ```Commandline``` field of the *RTL_USER_PROCESS_PARAMETERS* struct. Thus, we can allocate the buffer to an arbitrary size by calling a separate process to start the Batch file first with something like this ```%COMSPEC%\\##############\\..\\..\\cmd.exe /k file.bat```. As you can see we can have as many ```#``` as we want. Then it's only a matter of getting the mouse / keyboad input and writing it to the field. For audio, it uses **fmod** as the audio engine. To communicate, we can use named pipes as an easy way to send data to **radish** through Batch via ```ECHO ``` in a separate thread. Finally, to read the values for spatial audio, since this doesn't have to be super exact, we can create a timer queue to read the environment variables (```Environment``` field of the *RTL_USER_PROCESS_PARAMETERS* struct) every so often and update as needed.
