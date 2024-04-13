@@ -26,7 +26,7 @@
 Visit the documentation [here](doc/README.md)!
 
 ## Example
-Look at the example [here](ex)!
+Look at the example [here](ex)! For each example, please include ```radish.exe``` and ```fmod.dll``` from [here](bin) in the same directory.
 
 | Name  | Demo |Features |
 | ------------- | ------------- | ------------- |
