@@ -32,6 +32,7 @@ Look at the example [here](ex)! For each example, please include ```radish.exe``
 | ------------- | ------------- | ------------- |
 | [iso](ex/iso)  | Isometric Explorer  | Keyboard Input, Spatial Sound, Background Track, Sound Effects |
 | [player](ex/player)  | Music Player  | Keyboard Input, Background Track |
+| [rhythm](ex/rhythm)  | Basic Rhythm Game | Mouse Input, Background Track |
 | [demo](ex/demo)  | Overall Demo  | Mouse Input, Background Track, Spatial Sound, Sound Effects, Back and Forth Menu Transitions |
 
 ## Music Credits
@@ -41,6 +42,7 @@ Look at the example [here](ex)! For each example, please include ```radish.exe``
 | [CoffeeToGo.mp3](https://www.youtube.com/watch?v=dqYQt-bmz_Y&ab_channel=FrederickViner)  | demo |
 | [LoveYou.mp3](https://www.youtube.com/watch?v=7gYG95NG1YA&ab_channel=Seycara)  | demo |
 | [A Hunger Too Deep.mp3](https://www.youtube.com/watch?v=-h3ym3d5waA&ab_channel=AtriumCarceri-Topic)  | iso |
+| [Relax Time.mp3](https://www.youtube.com/watch?v=z3W6HqIns80&ab_channel=%E3%80%8C%E9%9B%A8%E5%A3%B0%E3%80%8Dpsithur)  | rhythm |
 | [Biomechanical Era.mp3](https://www.youtube.com/watch?v=S_j2lWmQs6s&ab_channel=DeathSelektor)  | player |
 | [Megatron Stopped.mp3](https://www.youtube.com/watch?v=kG2tAAj0X-4&ab_channel=TFantasImation)  | player |
 | [Neo Noir.mp3](https://www.youtube.com/watch?v=S_j2lWmQs6s&ab_channel=DeathSelektor)  | player |
