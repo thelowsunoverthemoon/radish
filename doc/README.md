@@ -56,7 +56,7 @@ CALL :RADISH_CREATE_OBJ <index> <var> <x> <y>
 * x : x position of object
 * y : y position of object
 
-You can then manipulate audio by passing messages enclosed by ```%RADISH_AUDIO_START%``` and ```%RADISH_AUDIO_END%```. The two messages are
+You can then manipulate audio by passing messages by starting with ```%RADISH_AUDIO%``. The two messages are
 
 ```
 "P#var#start#period#volume"
@@ -81,5 +81,5 @@ This is only for tracks or objects. It stops it immediatly.
 So, for example, to play a click sound and animal sound at the same time, with the click at 50% volume and the animal sound fading away, write:
 
 ```
-%RADISH_AUDIO_START% "P#%click%#0#5#50" "P#%animal%#100#1#0" %RADISH_AUDIO_END%
+%RADISH_AUDIO% "P#%click%#0#5#50" "P#%animal%#100#1#0"
 ```

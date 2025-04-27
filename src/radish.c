@@ -579,7 +579,7 @@ load_audio(struct param_store* param, FMOD_MODE flags, enum sound_type type) {
     
     if (param->sound_store_cur == param->sound_store_max) {
         param->sound_store_max = !param->sound_store_max ? SOUND_STORE_START : param->sound_store_max * 2;
-        param->sound_store = realloc(param->sound_store, sizeof(FMOD_SOUND*) * param->sound_store_max);
+        param->sound_store = realloc(param->sound_store, sizeof(struct sound) * param->sound_store_max);
         IF_ERR_EXIT(param->sound_store, "allocation error for sound storage");
     }
     

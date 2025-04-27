@@ -54,7 +54,7 @@ CALL :RADISH_ADD "whisper.mp3" whisper OBJECT
 
 SET /A "y[r]=relic[y] - 5", "x[r]=((relic[x] - (dim - y[r]) - margin) / 3) + 1"
 CALL :RADISH_CREATE_OBJ %whisper% whisper[obj] %x[r]% %y[r]%
-%RADISH_AUDIO_START% "P#%background%#100#0#100" "P#%whisper[obj]%#100#0#100" %RADISH_AUDIO_END%
+%RADISH_AUDIO% "P#%background%#100#0#100" "P#%whisper[obj]%#100#0#100"
 
 :GAME
 TITLE Press WASD to Move, Q to Quit
@@ -74,7 +74,7 @@ FOR /L %%# in () DO (
         IF "!pressed!" == "0" ( IF not "!mv[%%B]!" == "" (
             (SET /A "y[t]=y[u]", "x[t]=x[u]", !mv[%%B]:#=t!, "1/((((5-y[t])>>31)&1)&(((y[t]-(grid[y]+6))>>31)&1)&((((((grid[y]-(y[t]-5)))+%margin%)-x[t])>>31)&1)&(((x[t]-((((grid[y]-(y[t]-5)))+%margin%)+(3*grid[x])))>>31)&1))" 2>NUL) && (
                 IF not defined tile[!y[t]!][!x[t]!] (
-                    %RADISH_AUDIO_START% "P#%footstep%#100#0#100" %RADISH_AUDIO_END%
+                    %RADISH_AUDIO% "P#%footstep%#100#0#100"
                     SET /A "y[u]=y[t]", "x[u]=x[t]", "y[a]=y[u] - 5", "x[a]=((x[u] - (dim - y[a]) - margin) / 3) + 1"
                     SET "pressed=%%B"
                 )
@@ -98,7 +98,7 @@ SET col=%ESC%[38;2;cm
 GOTO :EOF
 
 :RADISH
-SET /A "RADISH_ID=RADISH_INDEX=0" & SET "RADISH_AUDIO_START=ECHO " & SET "RADISH_AUDIO_END=>\\.\pipe\RADISH" & SET "RADISH_END=(TASKKILL /F /IM "RADISH.exe")>NUL & EXIT"
+SET /A "RADISH_ID=RADISH_INDEX=0" & SET "RADISH_AUDIO=>\\.\pipe\RADISH ECHO " & SET "RADISH_END=(TASKKILL /F /IM "RADISH.exe")>NUL & EXIT"
 RADISH "%~nx0" %~1
 GOTO :EOF
 :RADISH_WAIT 
@@ -107,13 +107,13 @@ GOTO :EOF
 GOTO :RADISH_WAIT
 :RADISH_ADD <name> <var> <type> 
 (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL & SET /A "%2=RADISH_INDEX", "RADISH_INDEX+=1"
-IF "%3" == "EFFECT" (%RADISH_AUDIO_START% "E#%~1" %RADISH_AUDIO_END%) else IF "%3" == "TRACK" (%RADISH_AUDIO_START% "T#%~1" %RADISH_AUDIO_END%) else IF "%3" == "OBJECT" (%RADISH_AUDIO_START% "O#%~1" %RADISH_AUDIO_END%)
+IF "%3" == "EFFECT" (%RADISH_AUDIO% "E#%~1") else IF "%3" == "TRACK" (%RADISH_AUDIO% "T#%~1") else IF "%3" == "OBJECT" (%RADISH_AUDIO% "O#%~1")
 (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
 GOTO :EOF
 :RADISH_CREATE_OBJ <index> <var> <x> <y>
 (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
-SET /A "RADISH_ID-=1", "%2=RADISH_ID" & %RADISH_AUDIO_START% "C#%1#%3#%4" %RADISH_AUDIO_END% & (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
+SET /A "RADISH_ID-=1", "%2=RADISH_ID" & %RADISH_AUDIO% "C#%1#%3#%4" & (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
 GOTO :EOF
 :RADISH_SET_OBS <x> <y>
-(PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL & %RADISH_AUDIO_START% "X#%1#%2" %RADISH_AUDIO_END% & (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
+(PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL & %RADISH_AUDIO% "X#%1#%2" & (PATHPING 127.0.0.1 -n -q 1 -p 100)>NUL
 GOTO :EOF
