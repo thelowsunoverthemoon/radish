@@ -51,3 +51,7 @@ Look at the example [here](ex)! For each example, please include ```radish.exe``
 
 ## How does it work?
 To set the value of the variable ```CMDCMDLINE```, we can take advantage of the fact that it directly reads from the ```Commandline``` field of the ```RTL_USER_PROCESS_PARAMETERS``` struct. Thus, we can allocate the buffer to an arbitrary size by calling a separate process to start the Batch file first with something like this ```%COMSPEC%\\##############\\..\\..\\cmd.exe /k file.bat```. As you can see we can have as many ```#``` as we want. Then it's only a matter of getting the mouse / keyboad input and writing it to the field. For audio, it uses **fmod** as the audio engine. To communicate, we can use named pipes as an easy way to send data to **radish** through Batch via ```ECHO ``` in a separate thread. Finally, to read the values for spatial audio, since this doesn't have to be super exact, we can create a timer queue to read the environment variables (```Environment``` field of the ```RTL_USER_PROCESS_PARAMETERS``` struct) every so often and update as needed.
+
+## Compiling
+
+To compile, you only need to run ```compile.bat```, and it will download the necessary files. This batch file was created by [Grub4k](https://github.com/Grub4K), and uses the ```zig cc``` compiler.
