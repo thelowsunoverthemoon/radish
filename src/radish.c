@@ -7,7 +7,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
-// compile   : doskey ds=(cl radish.c "ntdll/ntdll_x64.lib" "fmod_vc.lib" "user32.lib" /O2) ^&^& "demo.bat"
 // ntdll lib : https://github.com/x64dbg/ScyllaHide/blob/master/3rdparty/ntdll/ntdll.h
 
 // Bugs :
@@ -706,4 +705,5 @@ get_rtl_param(HANDLE con, PROCESS_BASIC_INFORMATION pbi) {
     IF_ERR_EXIT(ReadProcessMemory(con, peb.ProcessParameters, &rtl, sizeof(rtl), NULL), "error reading rtl struct");
     
     return rtl;
+
 }
