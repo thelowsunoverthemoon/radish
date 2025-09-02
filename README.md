@@ -55,3 +55,9 @@ To set the value of the variable ```CMDCMDLINE```, we can take advantage of the 
 ## Compiling
 
 To compile, you only need to run ```compile.bat```, and it will download the necessary files. This batch file was created by [Grub4k](https://github.com/Grub4K), and uses the ```zig cc``` compiler.
+
+## Todo
+
+- [ ] Instead of waiting using ```PATHPING```, use some sort of signalling mechanism
+- [ ] Clean up audio interface
+
